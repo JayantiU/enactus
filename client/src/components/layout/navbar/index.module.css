@@ -1,0 +1,63 @@
+*:focus {
+  outline: 0 !important;
+}
+
+#navContainer {
+  transform: translateY(1rem);
+  width: 90%;
+  border-radius: 1px;
+  margin: auto;
+  margin-bottom: 5rem;
+  background-color: #2ecc40;
+  -webkit-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3),
+    0 15px 12px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 12px 10px rgba(0, 0, 0, 0.22);
+}
+
+#toolbar {
+  display: grid;
+  width: 90%;
+  margin: auto;
+  grid-template-columns: 50% 50%;
+}
+
+#headerRight {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+#lunDesk {
+  color: white;
+}
+
+#stayProd {
+  margin-left: 0.5rem;
+  font-size: 0.8rem;
+  color: white;
+  white-space: nowrap;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+#navOptions {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+@media only screen and (max-width: 600px) {
+  #nav {
+    margin-bottom: 2.5rem;
+  }
+}
+
+/* removed navbar on supported device(s) */
+@media only screen and (max-width: 280px) {
+  #nav {
+    display: none;
+  }
+}
