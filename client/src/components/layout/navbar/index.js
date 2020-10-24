@@ -20,7 +20,7 @@ const Navbar = ({ logout, auth: { isAuthenticated, loading } }) => {
         </Link>
       </li>
       <li>
-        <a href="!#" onClick={logout}>
+        <a onClick={logout}>
           <i className="fas fa-sign-out-alt" />{" "}
           <span>Logout</span>{" "}
           {/* hide-sm hides text on smaller screens */}
