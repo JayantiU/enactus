@@ -1,29 +1,29 @@
     {
-      "shower": "",
-      "groceries": "",
+      "shower": "4.5",
+      "groceries": "0.94",
       "food": [
         {
-          "fruit": "",
-          "vegetables": "",
-          "soda": ""
+          "fruit": "2.43",
+          "vegetables": "4.41",
+          "soda": "9.51"
         }
       ],
       "house": [
         {
-          "temp": ""
+          "temp": "22.2"
         }
       ],
       "transportation": [
         {
-            "fly": ""
+            "fly": "2.65"
           },
           {
-            "drive": ""
+            "drive": "25.54"
           }
       ],
       "screen_time": [
             {
-            "general": ""
+            "general": "1.55"
           }
       ]
     }
