@@ -1,0 +1,29 @@
+    {
+      "shower": "",
+      "groceries": "",
+      "food": [
+        {
+          "fruit": "",
+          "vegetables": "",
+          "soda": ""
+        }
+      ],
+      "house": [
+        {
+          "temp": ""
+        }
+      ],
+      "transportation": [
+        {
+            "fly": ""
+          },
+          {
+            "drive": ""
+          }
+      ],
+      "screen_time": [
+            {
+            "general": ""
+          }
+      ]
+    }

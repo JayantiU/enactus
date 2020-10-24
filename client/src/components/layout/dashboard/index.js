@@ -8,9 +8,12 @@ const Dashboard = () => {
   useEffect(() => {
     alanBtn({
         key: alanKey,
-        onCommand: ({ command }) => {
+        onCommand: ({ command, userInput }) => {
             switch (command){
-
+                case 'today': 
+                console.log(userInput)
+                case 'past': 
+                console.log(userInput)
             }
         }
     })
