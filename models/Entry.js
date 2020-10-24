@@ -22,7 +22,7 @@ const DayEntrySchema = new mongoose.Schema({
           },
         },
       ],
-      date: {
+      createdAt: {
         type: Date,
         default: Date.now,
       },

@@ -1,6 +1,9 @@
 # environment variables
 .env
 
+# misc
+data/actions.json
+
 ### Node ###
 # Logs
 logs

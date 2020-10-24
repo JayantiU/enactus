@@ -33,6 +33,8 @@ app.use(hpp());
 
 app.use('/api/users', require('./routes/api/users'));
 app.use('/api/auth', require('./routes/api/auth'));
+app.use('/api/entries', require('./routes/api/entries'));
+app.use('/api/actions', require('./routes/api/actions'));
 
 // Serve static assets in production
 if (process.env.NODE_ENV === 'production') {

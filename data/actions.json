@@ -1,29 +1,12 @@
-    {
-      "shower": "4.5",
-      "groceries": "0.94",
-      "food": [
-        {
-          "fruit": "2.43",
-          "vegetables": "4.41",
-          "soda": "9.51"
-        }
-      ],
-      "house": [
-        {
-          "temp": "22.2"
-        }
-      ],
-      "transportation": [
-        {
-            "fly": "2.65"
-          },
-          {
-            "drive": "25.54"
-          }
-      ],
-      "screen_time": [
-            {
-            "general": "1.55"
-          }
-      ]
-    }
+    {"actions": [
+        "shower:bath:4.5",
+        "groceries:grocery:0.94",
+        "fruit:2.43",
+        "vegetables:4.41",
+        "soda:9.51",
+        "house:22.2",
+            "fly:2.65",
+            "drive:25.54",
+            "watched:1.55",
+            "general: 2"
+    ]}
