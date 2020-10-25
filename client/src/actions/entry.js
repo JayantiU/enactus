@@ -52,8 +52,9 @@ export const addEntry = (formData) => async (dispatch) => {
     },
   };
   try {
+    console.log(formData)
     const res = await axios.post("/api/entries", formData, config);
-
+    console.log(res.data)
     dispatch({
       type: CREATE_ENTRY,
       payload: res.data,

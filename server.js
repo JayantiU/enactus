@@ -19,6 +19,12 @@ connectDB();
 //initialize request middleware
 app.use(express.json());
 
+// logging middleware
+app.use((req, res, next) => {
+  console.log(`${req.method} request for ${req.url}`)
+  next();
+})
+
 //Sanitize data
 app.use(mongoSanitize());
 

@@ -18,11 +18,6 @@ router.post(
   check("query", "Query is required").not().isEmpty(),
 ]],
   async (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
-    }
-
     try {
       const {actions} = (await Action.find())[0];
 
@@ -64,7 +59,7 @@ router.post(
 // Get all entries
 router.get("/", auth, async (req, res) => {
   try {
-    const entries = await Entry.find({ user: req.user.id}).sort({ date: -1 });
+    const entries = await Entry.find({ user: req.user.id }).sort({ date: -1 });
     res.json(entries);
   } catch (err) {
     console.err(err.message);
