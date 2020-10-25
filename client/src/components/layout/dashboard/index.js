@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { addEntry, getEntry } from '../../../actions/entry'
-
+import moment from 'moment';
 const alanKey = 'a36736f23b21bfd709dcc410696ad0a52e956eca572e1d8b807a3e2338fdd0dc/stage';
 
 const Dashboard = ({
@@ -14,6 +14,7 @@ const Dashboard = ({
 }) => {
 
     const [query, setQuery] = useState('');
+    const [date, setDate] = useState('');
 
   useEffect(() => {
     alanBtn({
@@ -21,7 +22,15 @@ const Dashboard = ({
         onCommand: ({ command, userInput }) => {
             switch (command){
                 case 'today': 
+                let today = new Date().toISOString().slice(0, 10)
                 setQuery(userInput);
+                setDate(today);
+                break;
+                case 'past': 
+                var pastRaw = (userInput.split('I')[0]).trim();
+                console.log(pastRaw)
+                setQuery(userInput);
+                setDate(pastRaw)
                 break;
             }
         }
@@ -33,12 +42,6 @@ const submit = () => {
         user: user._id,
         date: "today",
         query: query,
-        actions: [
-            {
-                _id: "5f94d3b0911be43d0c6d28e0",
-                text: "test"
-            }
-        ],
     })
 }
 
