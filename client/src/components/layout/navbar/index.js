@@ -9,20 +9,15 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import styles from './index.module.css';
+import logo from '../../../img/logo.png'
 
 const Navbar = ({ logout, auth: { isAuthenticated, loading } }) => {
   const authLinks = (
     <ul id={styles.navOptions}>
-          <li>
+      <li>
         <Link to="/dashboard">
           <i className="fas fa-user" />{" "}
           <span>Dashboard</span>
-        </Link>
-      </li>
-      <li>
-        <Link to="/create-log">
-          <i className="fas fa-user" />{" "}
-          <span>Create Log</span>
         </Link>
       </li>
       <li>
@@ -38,7 +33,7 @@ const Navbar = ({ logout, auth: { isAuthenticated, loading } }) => {
   const guestLinks = (
     <ul id={styles.navOptions}>
       <li>
-        <Link to="/register">Register</Link>
+        <Link to="/register">Dashboard</Link>
       </li>
       <li>
         <Link to="/login">Login</Link>
@@ -47,14 +42,11 @@ const Navbar = ({ logout, auth: { isAuthenticated, loading } }) => {
   );
 
   return (
+    
     <nav id={styles.navContainer}>
             <Toolbar id={styles.toolbar}>
-            <div id={styles.headerLeft}>
-            <Link to="/">
-          enactus
-        </Link>
-          </div>
-
+            <img src={logo} id={styles.logo} />
+            <span id={styles.logoText}>CarbonPrint</span>
           <div id={styles.headerRight}>
             <>
             {!loading && (
@@ -62,6 +54,7 @@ const Navbar = ({ logout, auth: { isAuthenticated, loading } }) => {
       )}
             </>
           </div>
+          
       {/* If not loading, evaluate fragment */}
    
       </Toolbar>
