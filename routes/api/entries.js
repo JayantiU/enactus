@@ -6,6 +6,7 @@ const auth = require("../../middleware/auth");
 const User = require("../../models/User");
 const Entry = require("../../models/Entry");
 const Action = require("../../models/Action");
+const { query } = require("express");
 
 // POST api/entries
 // Create an entry
@@ -23,12 +24,30 @@ router.post(
     }
 
     try {
-      const actions = await Action.find
+      const {actions} = (await Action.find())[0];
+
+      var queryActions = [];
+      var totalScore = 0;
+
+      for (var i = 0; i < actions.length; i++){
+        var splitActions = actions[i].split(":");
+        for (var j = 0; j < splitActions.length - 1; j++){
+          var querySplit = req.body.query.split(' ');
+          for (var k = 0; k < querySplit.length; k++){
+            if (querySplit[k] === splitActions[j]){
+              queryActions.push({ text: querySplit[k], score: parseFloat(splitActions[splitActions.length - 1])});
+              totalScore += parseFloat(splitActions[splitActions.length - 1])
+            }
+          }
+        }
+      }
+
       const newEntry = new Entry({
         user: req.user.id,
         date: req.body.date,
         query: req.body.query,
-        actions: req.body.actions
+        actions: queryActions,
+        totalScore: totalScore
       });
 
       const entry = await newEntry.save();
@@ -58,10 +77,8 @@ router.get("/", auth, async (req, res) => {
 // @access   Private
 router.get("/:id", auth, async (req, res) => {
   try {
-    const {actions} = (await Action.find())[0];
+    const entry = await Entry.findById(req.params.id);
     const user = await User.findById(req.user.id);
-
-    const 
    
     // Check for ObjectId format and post
     if (!req.params.id.match(/^[0-9a-fA-F]{24}$/) || !entry) {

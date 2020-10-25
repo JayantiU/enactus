@@ -20,8 +20,15 @@ const DayEntrySchema = new mongoose.Schema({
             type: String,
             required: true,
           },
+          score: {
+            type: Number,
+            required: false
+          }
         },
       ],
+      totalScore: {
+        type: Number
+    },
       createdAt: {
         type: Date,
         default: Date.now,
