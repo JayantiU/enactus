@@ -2,30 +2,50 @@
   outline: 0 !important;
 }
 
+#logo {
+  width: 50px;
+  height: 58px;
+  position: absolute; 
+  left: 3px;
+  top: 4px; 
+}
+#logoText{
+  font-size: 20px;
+  font-family: Montserrat;
+  position: absolute; 
+  left: 60px;
+  top: 20px; 
+}
+
 #navContainer {
   transform: translateY(1rem);
-  width: 90%;
   border-radius: 1px;
   margin: auto;
   margin-bottom: 5rem;
-  background-color: #2ecc40;
-  -webkit-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3),
-    0 15px 12px rgba(0, 0, 0, 0.22);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 12px 10px rgba(0, 0, 0, 0.22);
+  background-color:#AACC00;
+  justify-content:center;
+  border-radius: 15px;
+  
 }
 
 #toolbar {
   display: grid;
-  width: 90%;
+  width: 100%;
   margin: auto;
   grid-template-columns: 50% 50%;
 }
 
 #headerRight {
   display: flex;
-  justify-content: flex-end;
   align-items: center;
+  width: 400px; 
+  position: absolute; 
+  right: -150px;
+  top: 9px;
+  font-family: Montserrat;
+ 
 }
+
 
 #lunDesk {
   color: white;
@@ -46,6 +66,7 @@ a {
 #navOptions {
   list-style: none;
   display: flex;
+  width: 150px;
   justify-content: space-between;
 }
 
