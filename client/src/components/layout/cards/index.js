@@ -4,6 +4,7 @@ import Item from './card'
 import alanBtn from '@alan-ai/alan-sdk-web';
 import Card from './card';
 import useStyles from './styles.js';
+import './index.css'
 
 const alanKey = 'a36736f23b21bfd709dcc410696ad0a52e956eca572e1d8b807a3e2338fdd0dc/stage';
 
@@ -12,7 +13,13 @@ const classes = useStyles();
 
 if (!entries.length) {
     return (
-<p>loading...</p>
+      <>
+      <div className='no-entries-container'>
+<h1>You don't have any entries yet!</h1>
+<p>Return to the create entry page to get started!</p>
+<img src='https://webstockreview.net/images/clipart-earth-animated-14.png'/>
+</div>
+</>
     );
   }
 

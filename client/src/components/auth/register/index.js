@@ -4,6 +4,14 @@ import { register } from "../../../actions/auth";
 import { Link, Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
 
+//materialUI imports
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import Paper from '@material-ui/core/Paper'
+import './index.css'
+
 const Register = ({ setAlert, register, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     name: "",
@@ -32,6 +40,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
     return <Redirect to="dashboard" />;
   }
   return (
+    <Paper elevation={7} className='register-container'>
     <Fragment>
       <h1 className="large text-primary">Sign Up</h1>
       <p className="lead">
@@ -39,7 +48,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
       </p>
       <form className="form" onSubmit={(e) => onSubmit(e)}>
         <div className="form-group">
-          <input
+          <TextField
             type="text"
             placeholder="Name"
             name="name"
@@ -49,7 +58,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
           />
         </div>
         <div className="form-group">
-          <input
+          <TextField
             type="email"
             placeholder="Email Address"
             name="email"
@@ -59,7 +68,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
           />
         </div>
         <div className="form-group">
-          <input
+          <TextField
             type="password"
             placeholder="Password"
             name="password"
@@ -69,7 +78,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
           />
         </div>
         <div className="form-group">
-          <input
+          <TextField
             type="password"
             placeholder="Confirm Password"
             name="password2"
@@ -78,12 +87,13 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
             onChange={(e) => onChange(e)}
           />
         </div>
-        <input type="submit" className="btn btn-primary" value="Register" />
+        <Button type="submit" className="btn btn-primary" value="Register" id='register-button'>Enter</Button>
       </form>
       <p className="my-1">
         Already have an account? <Link to="/login">Sign In</Link>
       </p>
     </Fragment>
+    </Paper>
   );
 };
 

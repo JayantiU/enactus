@@ -4,6 +4,14 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { login } from "../../../actions/auth";
 
+//materialUI imports
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import Paper from '@material-ui/core/Paper'
+import './index.css'
+
 const Login = ({ login, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     email: "",
@@ -25,6 +33,7 @@ const Login = ({ login, isAuthenticated }) => {
     return <Redirect to="/dashboard" />;
   }
   return (
+    <Paper elevation={7} className='login-container'>
     <Fragment>
       <h1 className="large text-primary">Sign In</h1>
       <p className="lead">
@@ -32,7 +41,7 @@ const Login = ({ login, isAuthenticated }) => {
       </p>
       <form className="form" onSubmit={(e) => onSubmit(e)}>
         <div className="form-group">
-          <input
+          <TextField
             type="email"
             placeholder="Email Address"
             name="email"
@@ -42,7 +51,7 @@ const Login = ({ login, isAuthenticated }) => {
           />
         </div>
         <div className="form-group">
-          <input
+          <TextField
             type="password"
             placeholder="Password"
             name="password"
@@ -51,12 +60,13 @@ const Login = ({ login, isAuthenticated }) => {
             onChange={(e) => onChange(e)}
           />
         </div>
-        <input type="submit" className="btn btn-primary" value="Login" />
+        <Button type="submit" className="btn btn-primary" value="Login" id='login-button'>Enter</Button>
       </form>
       <p className="my-1">
         Don't have an account? <Link to="/register">Sign Up</Link>
       </p>
     </Fragment>
+  </Paper>
   );
 };
 

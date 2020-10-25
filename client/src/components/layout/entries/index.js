@@ -5,7 +5,13 @@ import { connect } from "react-redux";
 import Cards from '../cards';
 import alanBtn from '@alan-ai/alan-sdk-web';
 import {Bar, Line, Pie} from 'react-chartjs-2';
+import Fab from '@material-ui/core/Fab';
 import './index.css'
+
+import Paper from '@material-ui/core/Paper';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import AddIcon from '@material-ui/icons/Add';
 
 const alanKey = 'a36736f23b21bfd709dcc410696ad0a52e956eca572e1d8b807a3e2338fdd0dc/stage';
 const chartData = {
@@ -34,7 +40,9 @@ const chartData = {
   ]
 }
 
-const Entries = ({ getEntries, entry: { entries }}) => {
+const Entries = ({ getEntries, entry: { entries }, auth: { user }}) => {
+  const [value, setValue] = React.useState(0);
+
     useEffect(() => {
         getEntries()
     }, getEntries)
@@ -104,16 +112,43 @@ const formatEntries = () => {
   return res;
 }
 
+const handleChange = (event, newValue) => {
+  console.log(newValue)
+  setValue(newValue);
+};
+
     return (
         <div>
         {entries && entries.length !== 0 && 
+        <>
+        {user && 
+        <>
+        <div className='header-container'>
+        <h1>Welcome, {user.name}</h1>
+        </div>
+        </>
+        }
+        <Paper className='tabs-container' style={{background: '#2ECC40', color: 'white'}}>
+      <Tabs
+        value={value}
+        onChange={handleChange}
+        indicatorColor="primary"
+        textColor="white"
+        centered
+      >
+        <Tab label="Line" style={{color: 'white'}}/>
+        <Tab label="Bar" style={{color: 'white'}}/>
+        <Tab label="Pie" style={{color: 'white'}}/>
+      </Tabs>
+    </Paper>
         <div className='chart-container'>
+        {value === 0 &&
                 <Line
           data={formatEntries()}
           options={{
             title:{
-              display:'yeet',
-              text:'Largest Cities In '+ 'yoot',
+              display:'CO2',
+              text:`CO2 emissions over the past ${entries.length}`,
               fontSize:25
             },
             // legend:{
@@ -122,8 +157,48 @@ const formatEntries = () => {
             // }
           }}
         />
-        </div>
         }
+        {value === 1 &&
+                <Bar
+          data={formatEntries()}
+          options={{
+            title:{
+              display:'CO2',
+              text:`CO2 emissions over the past ${entries.length}`,
+              fontSize:25
+            },
+            // legend:{
+            //   display:this.props.displayLegend,
+            //   position:this.props.legendPosition
+            // }
+          }}
+        />
+        }
+        {value === 2 &&
+                <Pie
+          data={formatEntries()}
+          options={{
+            title:{
+              display:'CO2',
+              text:`CO2 emissions over the past ${entries.length}`,
+              fontSize:25
+            },
+            // legend:{
+            //   display:this.props.displayLegend,
+            //   position:this.props.legendPosition
+            // }
+          }}
+        />
+        }
+        </div>
+        </>
+        }
+
+        {/* <div className='compare-prompt'>
+        <Fab color="primary" aria-label="add">
+        <AddIcon />
+      </Fab>
+        </div> */}
 
            <Cards entries={entries}></Cards>
         </div>
@@ -133,10 +208,12 @@ const formatEntries = () => {
 Entries.propTypes = {
     getEntries: PropTypes.func.isRequired,
     entry: PropTypes.object.isRequired,
+    auth: PropTypes.object.isRequired,
   };
   
   const mapStateToProps = (state) => ({
     entry: state.entry,
+    auth: state.auth
   });
   
   export default connect(mapStateToProps, { getEntries })(Entries);

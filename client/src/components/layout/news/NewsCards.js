@@ -14,7 +14,8 @@ const NewsCards = ({ articles, activeArticle }) => {
 const classes = useStyles();
 if (!articles.length) {
     return (
-   <p>enter some data</p>
+      <>
+      </>
     );
   }
 

@@ -88,4 +88,16 @@ router.get("/:id", auth, async (req, res) => {
   }
 });
 
+// GET api/entries/:demo_user_id
+// Get (DEMO) all entries
+router.get("/demo/:demo_user_id", async (req, res) => {
+  try {
+    const entries = await Entry.find({ user: req.params.demo_user_id }).sort({ date: -1 });
+    res.json(entries);
+  } catch (err) {
+    console.err(err.message);
+    res.status(500).send("Server error");
+  }
+});
+
 module.exports = router;

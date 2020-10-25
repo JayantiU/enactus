@@ -27,20 +27,15 @@
   align-items: center;
 }
 
-#lunDesk {
-  color: white;
-}
-
-#stayProd {
-  margin-left: 0.5rem;
-  font-size: 0.8rem;
-  color: white;
-  white-space: nowrap;
-}
-
 a {
   text-decoration: none;
   color: white;
+}
+
+ul li {
+  font-size: 0.8rem;
+  margin-left: 1rem;
+  white-space: nowrap;
 }
 
 #navOptions {

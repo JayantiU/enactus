@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { logout } from "../../../actions/auth";
+import truck from '../../../img/truck.png'
 
 //material UI imports
 import AppBar from '@material-ui/core/AppBar';
@@ -15,14 +16,20 @@ const Navbar = ({ logout, auth: { isAuthenticated, loading } }) => {
     <ul id={styles.navOptions}>
           <li>
         <Link to="/dashboard">
-          <i className="fas fa-user" />{" "}
+        <i class="fas fa-chart-line"/>{" "}
           <span>Dashboard</span>
         </Link>
       </li>
       <li>
         <Link to="/create-log">
-          <i className="fas fa-user" />{" "}
+        <i class="fas fa-plus-circle"/>{" "}
           <span>Create Log</span>
+        </Link>
+      </li>
+      <li>
+        <Link to="/compare">
+        <i class="fas fa-user-friends"/>{" "}
+          <span>Compare Statistics</span>
         </Link>
       </li>
       <li>
@@ -51,7 +58,7 @@ const Navbar = ({ logout, auth: { isAuthenticated, loading } }) => {
             <Toolbar id={styles.toolbar}>
             <div id={styles.headerLeft}>
             <Link to="/">
-          enactus
+          <img src={truck} style={{width: '35px', height: '30px'}}></img>
         </Link>
           </div>
 

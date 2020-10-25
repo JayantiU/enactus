@@ -116,9 +116,7 @@ const keyWordsUILoading = d => {
         
         <List component="nav" aria-label="secondary mailbox folders">
         {mentions && query && 
-        mentions.map(mention =>  <ListItem>
-          <ListItemText primary={`${mention}`} />
-        </ListItem>)
+        <p>Your input has been recieved! Press Confirm to submit your recording</p>
         }
         </List>
 
@@ -126,11 +124,17 @@ const keyWordsUILoading = d => {
         </div>
         {query &&
             <div className='confirm-container'>
-        <Button variant="contained" onClick={() => submit()}>
+        <Button variant="contained" onClick={() => submit()} style={{backgroundColor: '#2ECC40', color: 'white'}}>
   Confirm
 </Button>
         </div>
+
         }
+
+        <div className='dash-image-container'>
+        <img src='https://webstockreview.net/images/clipart-world-earth-half-7.png'/>
+        </div>
+
         </>
     )
 }
