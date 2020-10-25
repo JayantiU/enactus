@@ -1,38 +1,30 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import './index.css'
-import truck from '../../../img/truck.png'
-import alanBtn from '@alan-ai/alan-sdk-web';
-
-const alanKey = 'a36736f23b21bfd709dcc410696ad0a52e956eca572e1d8b807a3e2338fdd0dc/stage';
+import background from '../../../img/background.png'
+import {Button} from  'react-bootstrap'
+import { brown } from '@material-ui/core/colors'
 
 const Landing = () => {
-  useEffect(() => {
-    alanBtn({
-        key: alanKey,
-        onCommand: ({ command }) => {
-            switch (command){
-                case 'today': 
-
-            }
-        }
-    })
-}, []);
+    function NewlineText(props) {
+        const text = props.text;
+        const newText = text.split('\n').map(str => <p>{str}</p>);
+        
+        return newText;
+      }
     return (
         <div class="landing-container">
+            <span class="Title">What is Your Carbon Footprint? </span>
+            <p class='Body'>
+                <span>
+                <NewlineText text={'How did you impact the environment today?\nThere are so many things we do in one day \nyet we do not know the exact impact we had\nCarbonPrint will tell you exactly that!\n'} /> 
+                </span>
+            </p>
         <div class="landing-grid">
           <div class="landing-graphic">
-            <p>skdjksdjksdjkdsj</p>
           </div>
           <div class="landing-info">
-            <img src={truck} id="banner-style-1" />
-            {/* <img src="/mobileBanner.png" id="banner-style-2" /> */}
+            <Button variant="outline-success" href="#">Try Now!</Button> 
             <div class="buttons">
-              <a href="/create" id="start-lecture-button">
-                <span>ldsklsdkl</span>
-              </a>
-              <a id="join-lecture-button">
-                <span>dsjksdj</span>
-              </a>
             </div>
           </div>
         </div>
