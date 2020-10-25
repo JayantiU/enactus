@@ -20,3 +20,11 @@ export const LOGOUT = "LOGOUT";
 //PROFILE ACTIONS
 export const CLEAR_PROFILE = "CLEAR_PROFILE";
 export const ACCOUNT_DELETED = "ACCOUNT_DELETED";
+
+// Entry actions
+export const CREATE_ENTRY = "CREATE_ENTRY";
+export const GET_ENTRY = "GET_ENTRY";
+export const GET_ENTRIES = "GET_ENTRIES";
+export const ENTRY_ERROR = "ENTRY_ERROR";
+
+

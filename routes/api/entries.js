@@ -5,8 +5,9 @@ const auth = require("../../middleware/auth");
 
 const User = require("../../models/User");
 const Entry = require("../../models/Entry");
+const Action = require("../../models/Action");
 
-// POST api/posts
+// POST api/entries
 // Create an entry
 router.post(
   "/",
@@ -22,8 +23,8 @@ router.post(
     }
 
     try {
+      const actions = await Action.find
       const newEntry = new Entry({
-        //name, user and avatar are fetched from db using req token
         user: req.user.id,
         date: req.body.date,
         query: req.body.query,
@@ -40,8 +41,8 @@ router.post(
   }
 );
 
-// GET api/posts
-// Get all posts
+// GET api/entries
+// Get all entries
 router.get("/", auth, async (req, res) => {
   try {
     const entries = await Entry.find({ user: req.user.id}).sort({ date: -1 });
@@ -52,16 +53,16 @@ router.get("/", auth, async (req, res) => {
   }
 });
 
-// @route    GET api/posts/:id
-// @desc     Get post by ID
+// @route    GET api/entries/:id
+// @desc     Get entry by ID
 // @access   Private
 router.get("/:id", auth, async (req, res) => {
   try {
-    const entry = await Entry.findById(req.params.id);
+    const {actions} = (await Action.find())[0];
     const user = await User.findById(req.user.id);
 
-    if (entry.user !== user.id) return res.status(401).json({ msg: 'Unauthorized'})
-
+    const 
+   
     // Check for ObjectId format and post
     if (!req.params.id.match(/^[0-9a-fA-F]{24}$/) || !entry) {
       return res.status(404).json({ msg: "Entry not found" });
