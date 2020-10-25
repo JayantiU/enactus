@@ -7,6 +7,13 @@ import { addEntry, getEntry } from '../../../actions/entry';
 import Paper from '@material-ui/core/Paper';
 import './index.css'
 
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import Divider from '@material-ui/core/Divider';
+import Button from '@material-ui/core/Button';
+
 const alanKey = 'a36736f23b21bfd709dcc410696ad0a52e956eca572e1d8b807a3e2338fdd0dc/stage';
 
 const Dashboard = ({
@@ -17,6 +24,7 @@ const Dashboard = ({
 
     const [query, setQuery] = useState('');
     const [date, setDate] = useState('');
+    const [mentions, setMentions] = useState([]);
 
   useEffect(() => {
     alanBtn({
@@ -24,14 +32,17 @@ const Dashboard = ({
         onCommand: ({ command, userInput }) => {
             switch (command){
                 case 'today': 
-                let today = new Date().toISOString().slice(0, 10)
+                let today = (new Date(Date.now()).toLocaleString().split(','))[0];
+                console.log(today)
                 setQuery(userInput);
+                keyWordsUILoading(userInput)
                 setDate(today);
                 break;
                 case 'past': 
                 var pastRaw = (userInput.split('I')[0]).trim();
-                setQuery(userInput);
-                setDate(converToDate(pastRaw));
+                setQuery((userInput.split('I')[1]).trim());
+                keyWordsUILoading(userInput)
+                setDate(converToDate((userInput.split('I')[0]).trim()));
                 break;
             }
         }
@@ -62,29 +73,62 @@ const converToDate = d => {
 }
 
     day = day.replace(/\D/g,'');
-    return `${year}-${month}-${day}`
+    return `${day}/${month}/${year}`
+}
+
+const keyWordsUILoading = d => {
+    if (!d) return;
+    const UIwords = ['shower', 'bath', 'groceries', 'grocery', 'fruit', 'vegetables', 'soda', 'house', 'fly', 'drive', 'watched'];
+    const userInputSplit = d.split(' ');
+    var res = [];
+
+    for (var i = 0; i < UIwords.length; i++){
+        for (var j = 0; j < userInputSplit.length; j++){
+            if (userInputSplit[j] === UIwords[i]){
+                var prefix = Math.random() < 0.5 ? 'I heard you mention' : 'Did I hear something about'
+                res.push(`${prefix} ${userInputSplit[j]}`)
+            }
+        }
+    }
+    if (res.length === 0) res.push('Processing input...')
+    setMentions(res);
 }
 
     return (
         <>
         <div className='dashboard-container'>
            <Paper elevation={3} className='dashboard-left'>
-           <div>
-           <h1>Instructions</h1>
-<p>Talk us what you did today</p>
+           <div className='instructions'>
+           <h1>Example queries<i class="fas fa-question-circle"></i></h1>
+            <p>Tell us what you did today</p>
            </div>
 <div>
-    <p>Example queries</p>
-    <p>Click me!</p>
+<div className='example-queries'>
+<p>A couple example statements to help get you started</p>
+</div>
 </div>
            </Paper>
            <Paper elevation={3} className='dashboard-right'>
-        Empty container
+           <h1>Voice queue</h1>
+           
+        {mentions.length === 0 && query &&  <p>Input recieved</p>}
+        {mentions.length === 0 && !query && <p>Voice something to get started</p>}
+        
+        <List component="nav" aria-label="secondary mailbox folders">
+        {mentions && query && 
+        mentions.map(mention =>  <ListItem>
+          <ListItemText primary={`${mention}`} />
+        </ListItem>)
+        }
+        </List>
+
            </Paper>
         </div>
         {query &&
-        <div>
-            <button onClick={() => submit()}>submit</button>
+            <div className='confirm-container'>
+        <Button variant="contained" onClick={() => submit()}>
+  Confirm
+</Button>
         </div>
         }
         </>

@@ -6,6 +6,7 @@ import PrivateRoute from './PrivateRoute';
 import Dashboard from '../layout/dashboard'
 import Alert from '../layout/alert'
 import Entries from '../layout/entries'
+import Layout from '../layout/news/layout'
 
 const Routes = () => {
   return (
@@ -14,8 +15,9 @@ const Routes = () => {
       <Switch>
       <Route exact path="/register" component={Register} />
         <Route exact path="/login" component={Login} />
-        <PrivateRoute exact path="/dashboard" component={Dashboard} />
-        <PrivateRoute exact path="/entries" component={Entries} />
+        <PrivateRoute exact path="/compare" component={Layout} />
+        <PrivateRoute exact path="/create-log" component={Dashboard} />
+        <PrivateRoute exact path='/dashboard' component={Entries}/>
       </Switch>
     </section>
   );

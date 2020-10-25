@@ -13,3 +13,27 @@
 .dashboard-right {
   width: 40%;
 }
+
+.dashboard-right {
+  text-align: center;
+}
+
+.instructions {
+  text-align: center;
+}
+
+.instructions i {
+  margin-left: 1rem;
+}
+
+.example-queries {
+  display: flex;
+  text-align: center;
+  justify-content: space-around;
+}
+
+.confirm-container {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+}

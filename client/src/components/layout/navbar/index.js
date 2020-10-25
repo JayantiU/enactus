@@ -13,10 +13,16 @@ import styles from './index.module.css';
 const Navbar = ({ logout, auth: { isAuthenticated, loading } }) => {
   const authLinks = (
     <ul id={styles.navOptions}>
-      <li>
+          <li>
         <Link to="/dashboard">
           <i className="fas fa-user" />{" "}
           <span>Dashboard</span>
+        </Link>
+      </li>
+      <li>
+        <Link to="/create-log">
+          <i className="fas fa-user" />{" "}
+          <span>Create Log</span>
         </Link>
       </li>
       <li>

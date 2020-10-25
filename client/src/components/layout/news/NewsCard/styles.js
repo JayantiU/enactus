@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 export default makeStyles({
   media: {
       // 250 px
-    height: 200,
+    height: 250,
   },
   border: {
     border: 'solid',
@@ -15,11 +15,10 @@ export default makeStyles({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
-    width: '100%'
+    borderBottom: '10px solid white',
   },
   activeCard: {
     borderBottom: '10px solid #22289a',
-    width: '100%'
   },
   grid: {
     display: 'flex',
@@ -37,10 +36,4 @@ export default makeStyles({
     display: 'flex',
     justifyContent: 'space-between',
   },
-  detailDate: {
-    width: '45%'
-  },
-  detailQuery: {
-    width: '45%'
-  }
 });
