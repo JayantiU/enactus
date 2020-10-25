@@ -62,6 +62,7 @@ alanBtn({
     }
 
     return (
+      <>
         <div className='news-layout-container'>
         {!entries ? <p>loading</p> : calcSum(entries) < 20 
         ? <>
@@ -80,8 +81,9 @@ alanBtn({
         <p>Make a command to find out whats happening world wide with the environment</p>
         </>
         }
-            <NewsCards articles={newsArticles} activeArticle={activeArticle}/>
         </div>
+        <NewsCards articles={newsArticles} activeArticle={activeArticle}/>
+        </>
     )
 }
 
